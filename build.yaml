@@ -1,30 +1,32 @@
-# This file generates the GitHub Actions matrix
-# For simple board + shield combinations, add them
-# to the top level board and shield arrays, for more
-# control, add individual board + shield combinations to
-# the `include` property, e.g:
-#
-# board: [ "nice_nano_v2" ]
-# shield: [ "corne_left", "corne_right" ]
-# include:
-#   - board: bdn9_rev2
-#   - board: nice_nano_v2
-#     shield: reviung41
-#
----
----
-include:
-  - board: nice_nano_v2
-    shield: keyball44_left
+name: Build Firmware
 
-  - board: nice_nano_v2
-    shield: keyball44_right
-    snippet: studio-rpc-usb-uart
-    cmake-args: >
-      -DCONFIG_ZMK_STUDIO=y
-      -DCONFIG_ZMK_MOUSE=y
-      -DCONFIG_ZMK_HID_POINTER=y
+on:
+  push:
+    branches: [ main ]
 
-  - board: nice_nano_v2
-    shield: settings_reset
-
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - board: nice_nano_v2
+            shield: keyball44_left
+          - board: nice_nano_v2
+            shield: keyball44_right
+            snippet: studio-rpc-usb-uart
+            cmake-args: >
+              -DCONFIG_ZMK_STUDIO=y
+              -DCONFIG_ZMK_MOUSE=y
+              -DCONFIG_ZMK_HID_POINTER=y
+          - board: nice_nano_v2
+            shield: settings_reset
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build firmware
+        run: |
+          echo "Building for board: ${{ matrix.config.board }}, shield: ${{ matrix.config.shield }}"
+          # ここに実際のビルドコマンドを記述してください
+          # 例:
+          # west build -d build/${{ matrix.config.shield }} -b ${{ matrix.config.board }} -- -DSHIELD=${{ matrix.config.shield }} ${{ matrix.config.cmake-args }}
