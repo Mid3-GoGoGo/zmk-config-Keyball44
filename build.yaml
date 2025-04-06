@@ -14,6 +14,7 @@ jobs:
         config:
           - board: nice_nano_v2
             shield: keyball44_left
+
           - board: nice_nano_v2
             shield: keyball44_right
             snippet: studio-rpc-usb-uart
@@ -21,6 +22,7 @@ jobs:
               -DCONFIG_ZMK_STUDIO=y
               -DCONFIG_ZMK_MOUSE=y
               -DCONFIG_ZMK_HID_POINTER=y
+
           - board: nice_nano_v2
             shield: settings_reset
 
