@@ -18,5 +18,6 @@ include:
   - board: nice_nano_v2
     shield: keyball44_right
     snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_MOUSE=y
   - board: nice_nano_v2
     shield: settings_reset
