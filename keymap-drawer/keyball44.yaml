@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - {t: ;, s: ':'}
-  - {t: '''', s: '"'}
+  - '&mkp MB1'
   - $$mdi:apple-keyboard-shift$$
   - Z
   - X
