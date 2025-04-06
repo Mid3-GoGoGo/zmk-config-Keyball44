@@ -69,7 +69,7 @@
             bindings = <
 &none             &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4    &kp NUMBER_5                 &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp NUMBER_9  &kp NUMBER_0  &kp BACKSPACE
 &kp LEFT_SHIFT    &none         &none         &kp UP_ARROW  &none           &none                        &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS      &kp MINUS     &kp RET
-&kp LEFT_COMMAND  &none         &kp LEFT      &kp DOWN      &kp RIGHT       &none                        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp DOT       &kp COMMA     &none
+&kp LEFT_COMMAND  &none         &kp LEFT      &kp DOWN      &kp RIGHT       &none                        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp DOT       &kp COMMA     &mkp LCLK
 &trans            &trans        &mo 4         &trans        &kp LANGUAGE_2                    &kp LANG1  &kp KP_NUMBER_0                                                                &to 0
             >;
         };
