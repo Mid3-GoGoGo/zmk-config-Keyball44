@@ -6,6 +6,8 @@
 #define SCROLL  5
 #define SNIPE   6
 
+#define ZMK_BEHAVIORS_KEEP_MKP
+
 #include <behaviors/mouse_keys.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
