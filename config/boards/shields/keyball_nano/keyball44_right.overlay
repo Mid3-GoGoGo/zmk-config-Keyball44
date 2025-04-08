@@ -64,7 +64,7 @@
 };
 
 /* トラックボール入力リスナーの定義 */
-{
+ / {
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
