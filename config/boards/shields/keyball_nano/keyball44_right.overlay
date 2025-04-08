@@ -4,15 +4,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* このファイルは Keyball44 の基本設定をインクルードします */
+/* Keyball44 の基本設定をインクルード */
 #include "keyball44.dtsi"
 
-/* キーマップの変換設定（右側用に列オフセットを調整） */
+/* キーマップ変換設定（右側用：列オフセット6） */
 &default_transform {
     col-offset = <6>;
 };
 
-/* キースキャンのGPIO割り当て */
+/* キースキャン用GPIO設定 */
 &kscan0 {
     col-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>,
                 <&pro_micro 5 GPIO_ACTIVE_HIGH>,
@@ -22,7 +22,7 @@
                 <&pro_micro 9 GPIO_ACTIVE_HIGH>;
 };
 
-/* SPI用のピン制御グループの設定 */
+/* SPI用のピン制御グループの定義 */
 &pinctrl {
     spi1_default: spi1_default {
         group1 {
@@ -42,7 +42,7 @@
     };
 };
 
-/* SPIバス設定とトラックボールセンサーの定義 */
+/* SPIバスおよびトラックボールセンサーの定義 */
 &spi1 {
     status = "okay";
     compatible = "nordic,nrf-spim";
@@ -53,7 +53,9 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";  /* PMW3610に変更 */
+        compatible = "pixart,pmw3610";  /* ※ 現在 "pixart,pmw3610" となっていますが、
+                                           ご使用のセンサーはPMW3610DMの場合、ドライバが両者を共通扱いするか、
+                                           もしくは "pixart,pmw3610dm" とする必要があるか検討してください。 */
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
@@ -63,7 +65,7 @@
     };
 };
 
-/* トラックボール入力リスナーの定義 */
+/* トラックボール入力リスナーの定義（ルートノードに配置） */
  / {
     trackball_listener {
         compatible = "zmk,input-listener";
